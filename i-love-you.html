@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>I Love You Maya !!💕</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(180deg, #fce4ec 0%, #f8bbd0 40%, #e1f5ee 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Georgia', serif;
+            overflow-x: hidden;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        /* ─── Floating hearts background ─── */
+        .heart-bg {
+            position: fixed;
+            font-size: 18px;
+            opacity: 0.15;
+            animation: floatUp linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0.15; }
+            100% { transform: translateY(-120px) rotate(30deg); opacity: 0; }
+        }
+
+        /* ─── Title ─── */
+        .title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #c2185b;
+            text-align: center;
+            text-shadow: 2px 3px 0px #f48fb1;
+            margin-bottom: 8px;
+            animation: pulse 2.5s ease-in-out infinite;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.4rem);
+            color: #ad1457;
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0.85;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        /* ─── Scene ─── */
+        .scene {
+            position: relative;
+            width: 340px;
+            height: 280px;
+            margin-bottom: 36px;
+            z-index: 1;
+        }
+
+        .title-area {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 8px;
+        }
+
+        .goose-wrapper {
+            position: absolute;
+            animation: orbitTitle 14s linear infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes orbitTitle {
+            0%   { top: -30px; left: -60px;              transform: scaleX(1)  rotate(-8deg); }
+            20%  { top: -50px; left: 30%;                transform: scaleX(1)  rotate(0deg); }
+            40%  { top: -30px; left: calc(100% + 20px);  transform: scaleX(1)  rotate(8deg); }
+            50%  { top:  10px; left: calc(100% + 30px);  transform: scaleX(-1) rotate(-5deg); }
+            70%  { top:  30px; left: 40%;                transform: scaleX(-1) rotate(0deg); }
+            90%  { top:  10px; left: -50px;              transform: scaleX(-1) rotate(5deg); }
+            100% { top: -30px; left: -60px;              transform: scaleX(1)  rotate(-8deg); }
+        }
+
+        .goose-wings-up {
+            animation: gooseWing 0.3s ease-in-out infinite alternate;
+            transform-origin: center;
+        }
+
+        @keyframes gooseWing {
+            from { transform: scaleY(1); }
+            to   { transform: scaleY(0.5); }
+        }
+
+        /* ─── Bee animation ─── */
+        .bee-wrapper {
+            position: absolute;
+            animation: flyAround 6s ease-in-out infinite;
+            z-index: 2;
+        }
+
+        @keyframes flyAround {
+            0%   { top:  60px; left:  40px; }
+            15%  { top:  30px; left: 160px; }
+            30%  { top:  70px; left: 260px; }
+            45%  { top: 100px; left: 200px; }
+            60%  { top: 140px; left: 130px; }
+            75%  { top:  90px; left:  60px; }
+            100% { top:  60px; left:  40px; }
+        }
+
+        .bee-wings {
+            animation: flutter 0.12s linear infinite alternate;
+            transform-origin: center bottom;
+        }
+
+        @keyframes flutter {
+            from { transform: scaleY(1); }
+            to   { transform: scaleY(0.6); }
+        }
+
+        /* ─── Vespa + button row ─── */
+        .vespa-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .pixel-vespa {
+            image-rendering: pixelated;
+            filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.1));
+            transition: transform 0.3s ease;
+        }
+
+        /* ── Vespa zoom animation ── */
+        .vespa-container.zoom .pixel-vespa {
+            animation: vespaZoom 0.9s cubic-bezier(0.4, 0, 1, 1) forwards;
+        }
+
+        @keyframes vespaZoom {
+            0%   { transform: translateX(0)    scaleX(1);    opacity: 1; }
+            30%  { transform: translateX(-12px) scaleX(0.95); opacity: 1; }
+            100% { transform: translateX(520px) scaleX(1.05); opacity: 0; }
+        }
+
+        /* ─── Button ─── */
+        .love-btn {
+            background: #e91e63;
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 14px 40px;
+            font-size: 1.1rem;
+            font-family: 'Georgia', serif;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #880e4f, 0 6px 16px rgba(233,30,99,0.35);
+            transition: transform 0.1s, box-shadow 0.1s;
+            letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .love-btn:hover  { transform: translateY(-2px); box-shadow: 0 6px 0 #880e4f, 0 10px 24px rgba(233,30,99,0.4); }
+        .love-btn:active { transform: translateY(2px);  box-shadow: 0 2px 0 #880e4f; }
+
+        /* ─── Dialog overlay ─── */
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .dialog-overlay.open { display: flex; }
+
+        /* ─── Book ─── */
+        .book-scene {
+            perspective: 1800px;
+            perspective-origin: center center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            animation: popIn 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.6); opacity: 0; }
+            to   { transform: scale(1);   opacity: 1; }
+        }
+
+        .book-open {
+            display: flex;
+            width: min(560px, 94vw);
+            height: min(400px, 70vh);
+            position: relative;
+            box-shadow: 0 28px 70px rgba(0,0,0,0.28);
+            border-radius: 4px 14px 14px 4px;
+        }
+
+        .book-left {
+            width: 50%;
+            height: 100%;
+            background: #fff9fb;
+            border-radius: 4px 0 0 4px;
+            border: 1.5px solid #f48fb1;
+            border-right: none;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 16px 14px;
+            overflow: hidden;
+        }
+
+        .book-left::before {
+            content: '';
+            position: absolute;
+            right: -4px; top: 4px; bottom: 4px;
+            width: 4px;
+            background: #f8bbd0;
+            border-radius: 0 2px 2px 0;
+            box-shadow: 2px 0 0 #f48fb1;
+        }
+
+        .book-right {
+            width: 50%;
+            height: 100%;
+            background: #fff9fb;
+            border-radius: 0 14px 14px 0;
+            border: 1.5px solid #f48fb1;
+            border-left: none;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 16px 14px;
+            overflow: hidden;
+        }
+
+        .book-spine {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 14px;
+            height: 100%;
+            background: linear-gradient(to right, #e91e63 0%, #f8bbd0 40%, #f8bbd0 60%, #e91e63 100%);
+            z-index: 20;
+            box-shadow: 0 0 10px rgba(194,24,91,0.25);
+        }
+
+        /* ─── Turning leaf ─── */
+        .book-leaf {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform-origin: left center;
+            z-index: 15;
+            pointer-events: none;
+        }
+
+        .book-leaf.is-turning-fwd  { animation: leafFwd  0.75s cubic-bezier(0.645,0.045,0.355,1) forwards; }
+        .book-leaf.is-turning-back { animation: leafBack 0.75s cubic-bezier(0.645,0.045,0.355,1) forwards; }
+
+        @keyframes leafFwd  { from { transform: rotateY(0deg); }    to { transform: rotateY(-180deg); } }
+        @keyframes leafBack { from { transform: rotateY(-180deg); } to { transform: rotateY(0deg); } }
+
+        .leaf-face {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 16px 14px;
+            overflow: hidden;
+        }
+
+        .leaf-face.front {
+            background: #fff9fb;
+            border: 1.5px solid #f48fb1;
+            border-left: none;
+            border-radius: 0 14px 14px 0;
+        }
+
+        .leaf-face.front::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to left, rgba(0,0,0,0.06) 0%, transparent 40%);
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .leaf-face.back {
+            background: #fff5f8;
+            border: 1.5px solid #f48fb1;
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            transform: rotateY(180deg);
+        }
+
+        /* ─── Page content ─── */
+        .pg-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .pg-num { font-size: 10px; color: #f48fb1; letter-spacing: 1.5px; font-family: Georgia, serif; }
+
+        .pg-img {
+            width: 100%;
+            height: 250px;          /* fixed height — same on every page */
+            flex-shrink: 0;
+            border-radius: 10px;
+            background: #fce4ec;
+            border: 1.5px dashed #f48fb1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .pg-img svg, .pg-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .pg-msg {
+            font-size: 0.8rem;
+            color: #c2185b;
+            font-style: italic;
+            line-height: 1.6;
+            font-family: Georgia, serif;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        /* ─── Nav ─── */
+        .book-nav { display: flex; gap: 10px; align-items: center; }
+
+        .nav-btn {
+            background: #fce4ec;
+            border: 1.5px solid #f48fb1;
+            color: #c2185b;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 0.88rem;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            transition: background 0.15s, transform 0.1s;
+        }
+
+        .nav-btn:hover  { background: #f8bbd0; transform: translateY(-1px); }
+        .nav-btn:active { transform: translateY(1px); }
+        .nav-btn:disabled { opacity: 0.3; cursor: default; transform: none; }
+
+        .close-btn {
+            background: #e91e63;
+            border: none;
+            color: #fff;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 0.88rem;
+            cursor: pointer;
+            font-family: Georgia, serif;
+            transition: background 0.15s;
+        }
+
+        .close-btn:hover { background: #c2185b; }
+
+        /* ─── Click hearts ─── */
+        .click-heart {
+            position: fixed;
+            pointer-events: none;
+            font-size: 22px;
+            z-index: 999;
+            animation: riseAndFade 1.2s ease-out forwards;
+            transform-origin: center;
+            user-select: none;
+        }
+
+        @keyframes riseAndFade {
+            0%   { opacity: 1; transform: translateY(0)    scale(1); }
+            40%  { opacity: 1; transform: translateY(-40px) scale(1.3); }
+            100% { opacity: 0; transform: translateY(-90px) scale(0.8); }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── TITLE (dynamic greeting) ── -->
+    <div class="title-area">
+        <h1 class="title" id="greeting-title">Loading... ♥</h1>
+        <div class="goose-wrapper" id="goose">
+            <svg class="goose-pixel" width="48" height="36" viewBox="0 0 48 36"
+                xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated;">
+                <g class="goose-wings-up">
+                    <rect x="4"  y="8"  width="18" height="8" fill="#e0e0e0" rx="2"/>
+                    <rect x="26" y="8"  width="18" height="8" fill="#e0e0e0" rx="2"/>
+                    <rect x="6"  y="14" width="14" height="6" fill="#bdbdbd" rx="1"/>
+                    <rect x="28" y="14" width="14" height="6" fill="#bdbdbd" rx="1"/>
+                </g>
+                <rect x="12" y="16" width="24" height="12" fill="#f5f5f5"/>
+                <rect x="10" y="18" width="28" height="8"  fill="#fff"/>
+                <rect x="20" y="8"  width="8"  height="10" fill="#fff"/>
+                <rect x="18" y="2"  width="12" height="8"  fill="#fff"/>
+                <rect x="30" y="4"  width="8"  height="4"  fill="#fb8c00"/>
+                <rect x="36" y="5"  width="4"  height="2"  fill="#e65100"/>
+                <rect x="28" y="3"  width="3"  height="3"  fill="#212121"/>
+                <rect x="29" y="4"  width="1"  height="1"  fill="#fff"/>
+                <rect x="8"  y="18" width="6"  height="4"  fill="#e0e0e0"/>
+                <rect x="4"  y="20" width="6"  height="3"  fill="#bdbdbd"/>
+                <rect x="18" y="28" width="4"  height="4"  fill="#fb8c00"/>
+                <rect x="26" y="28" width="4"  height="4"  fill="#fb8c00"/>
+                <rect x="16" y="30" width="6"  height="2"  fill="#fb8c00"/>
+                <rect x="24" y="30" width="6"  height="2"  fill="#fb8c00"/>
+            </svg>
+        </div>
+    </div>
+
+    <p class="subtitle" id="greeting-sub">I love you.</p>
+
+    <!-- ── SCENE ── -->
+    <div class="scene">
+        <svg width="360" height="360" viewBox="0 0 360 360"
+            xmlns="http://www.w3.org/2000/svg"
+            style="image-rendering:pixelated; display:block;">
+            <rect x="176" y="190" width="8"  height="120" fill="#388e3c"/>
+            <rect x="140" y="200" width="6"  height="100" fill="#388e3c" transform="rotate(-12,143,200)"/>
+            <rect x="212" y="200" width="6"  height="100" fill="#388e3c" transform="rotate(12,215,200)"/>
+            <rect x="104" y="210" width="5"  height="90"  fill="#388e3c" transform="rotate(-22,107,210)"/>
+            <rect x="248" y="210" width="5"  height="90"  fill="#388e3c" transform="rotate(22,251,210)"/>
+            <rect x="155" y="240" width="18" height="6"   fill="#43a047" transform="rotate(-10,164,243)"/>
+            <rect x="185" y="255" width="18" height="6"   fill="#43a047" transform="rotate(10,194,258)"/>
+            <rect x="125" y="248" width="14" height="5"   fill="#43a047" transform="rotate(-18,132,250)"/>
+            <rect x="222" y="252" width="14" height="5"   fill="#43a047" transform="rotate(18,229,254)"/>
+            <rect x="148" y="290" width="64" height="10"  fill="#f8bbd0"/>
+            <rect x="144" y="298" width="72" height="10"  fill="#f48fb1"/>
+            <rect x="148" y="306" width="64" height="10"  fill="#f8bbd0"/>
+            <rect x="152" y="314" width="56" height="10"  fill="#f48fb1"/>
+            <rect x="156" y="322" width="48" height="10"  fill="#f8bbd0"/>
+            <rect x="160" y="330" width="40" height="10"  fill="#f48fb1"/>
+            <rect x="164" y="340" width="32" height="10"  fill="#f8bbd0"/>
+            <rect x="156" y="308" width="48" height="6"   fill="#e91e63"/>
+            <rect x="140" y="302" width="16" height="10"  fill="#e91e63" rx="3"/>
+            <rect x="136" y="300" width="12" height="14"  fill="#ad1457" rx="2"/>
+            <rect x="204" y="302" width="16" height="10"  fill="#e91e63" rx="3"/>
+            <rect x="212" y="300" width="12" height="14"  fill="#ad1457" rx="2"/>
+            <rect x="176" y="304" width="8"  height="8"   fill="#c2185b"/>
+            <rect x="162" y="130" width="18" height="12"  fill="#f48fb1"/>
+            <rect x="164" y="122" width="14" height="10"  fill="#f06292"/>
+            <rect x="180" y="130" width="18" height="12"  fill="#f48fb1"/>
+            <rect x="182" y="122" width="14" height="10"  fill="#f06292"/>
+            <rect x="156" y="142" width="12" height="14"  fill="#f48fb1"/>
+            <rect x="192" y="142" width="12" height="14"  fill="#f48fb1"/>
+            <rect x="162" y="158" width="18" height="10"  fill="#f48fb1"/>
+            <rect x="180" y="158" width="18" height="10"  fill="#f48fb1"/>
+            <rect x="166" y="134" width="28" height="10"  fill="#f06292"/>
+            <rect x="168" y="128" width="24" height="8"   fill="#e91e63"/>
+            <rect x="162" y="144" width="10" height="18"  fill="#f06292"/>
+            <rect x="188" y="144" width="10" height="18"  fill="#f06292"/>
+            <rect x="166" y="156" width="28" height="8"   fill="#f06292"/>
+            <rect x="170" y="138" width="20" height="18"  fill="#c2185b"/>
+            <rect x="172" y="136" width="16" height="4"   fill="#c2185b"/>
+            <rect x="174" y="140" width="6"  height="6"   fill="#ad1457"/>
+            <rect x="182" y="140" width="6"  height="6"   fill="#ad1457"/>
+            <rect x="174" y="148" width="6"  height="6"   fill="#ad1457"/>
+            <rect x="182" y="148" width="6"  height="6"   fill="#ad1457"/>
+            <rect x="96"  y="128" width="20" height="10"  fill="#fdd835"/>
+            <rect x="96"  y="168" width="20" height="10"  fill="#fdd835"/>
+            <rect x="76"  y="148" width="10" height="20"  fill="#fdd835"/>
+            <rect x="116" y="148" width="10" height="20"  fill="#fdd835"/>
+            <rect x="82"  y="132" width="12" height="12"  fill="#fdd835"/>
+            <rect x="112" y="132" width="12" height="12"  fill="#fdd835"/>
+            <rect x="82"  y="162" width="12" height="12"  fill="#fdd835"/>
+            <rect x="112" y="162" width="12" height="12"  fill="#fdd835"/>
+            <rect x="98"  y="126" width="16" height="4"   fill="#fb8c00"/>
+            <rect x="74"  y="150" width="4"  height="16"  fill="#fb8c00"/>
+            <rect x="80"  y="130" width="8"  height="6"   fill="#fb8c00"/>
+            <rect x="114" y="130" width="8"  height="6"   fill="#fb8c00"/>
+            <rect x="88"  y="138" width="30" height="30"  fill="#5d4037"/>
+            <rect x="90"  y="136" width="26" height="4"   fill="#5d4037"/>
+            <rect x="90"  y="166" width="26" height="4"   fill="#5d4037"/>
+            <rect x="92"  y="142" width="4"  height="4"   fill="#4e342e"/>
+            <rect x="100" y="142" width="4"  height="4"   fill="#4e342e"/>
+            <rect x="108" y="142" width="4"  height="4"   fill="#4e342e"/>
+            <rect x="96"  y="150" width="4"  height="4"   fill="#4e342e"/>
+            <rect x="104" y="150" width="4"  height="4"   fill="#4e342e"/>
+            <rect x="92"  y="158" width="4"  height="4"   fill="#4e342e"/>
+            <rect x="100" y="158" width="4"  height="4"   fill="#4e342e"/>
+            <rect x="108" y="158" width="4"  height="4"   fill="#4e342e"/>
+            <rect x="234" y="148" width="28" height="10"  fill="#ef5350"/>
+            <rect x="230" y="138" width="36" height="12"  fill="#ef5350"/>
+            <rect x="228" y="128" width="40" height="12"  fill="#e53935"/>
+            <rect x="232" y="118" width="14" height="12"  fill="#ef5350"/>
+            <rect x="250" y="118" width="14" height="12"  fill="#ef5350"/>
+            <rect x="236" y="110" width="10" height="10"  fill="#ef5350"/>
+            <rect x="250" y="110" width="10" height="10"  fill="#ef5350"/>
+            <rect x="236" y="124" width="5"  height="16"  fill="#ff8a80" opacity=".7"/>
+            <rect x="50"  y="150" width="14" height="8"   fill="#ce93d8"/>
+            <rect x="50"  y="174" width="14" height="8"   fill="#ce93d8"/>
+            <rect x="38"  y="158" width="8"  height="16"  fill="#ce93d8"/>
+            <rect x="68"  y="158" width="8"  height="16"  fill="#ce93d8"/>
+            <rect x="42"  y="152" width="10" height="10"  fill="#ba68c8"/>
+            <rect x="62"  y="152" width="10" height="10"  fill="#ba68c8"/>
+            <rect x="42"  y="172" width="10" height="10"  fill="#ba68c8"/>
+            <rect x="62"  y="172" width="10" height="10"  fill="#ba68c8"/>
+            <rect x="48"  y="156" width="20" height="20"  fill="#fff9c4"/>
+            <rect x="50"  y="158" width="4"  height="4"   fill="#fdd835"/>
+            <rect x="58"  y="158" width="4"  height="4"   fill="#fdd835"/>
+            <rect x="50"  y="166" width="4"  height="4"   fill="#fdd835"/>
+            <rect x="58"  y="166" width="4"  height="4"   fill="#fdd835"/>
+            <rect x="286" y="148" width="14" height="8"   fill="#fff"/>
+            <rect x="286" y="172" width="14" height="8"   fill="#fff"/>
+            <rect x="274" y="156" width="8"  height="16"  fill="#fff"/>
+            <rect x="304" y="156" width="8"  height="16"  fill="#fff"/>
+            <rect x="278" y="150" width="10" height="10"  fill="#eeeeee"/>
+            <rect x="298" y="150" width="10" height="10"  fill="#eeeeee"/>
+            <rect x="278" y="170" width="10" height="10"  fill="#eeeeee"/>
+            <rect x="298" y="170" width="10" height="10"  fill="#eeeeee"/>
+            <rect x="284" y="154" width="20" height="20"  fill="#fdd835"/>
+            <rect x="286" y="156" width="4"  height="4"   fill="#f9a825"/>
+            <rect x="294" y="156" width="4"  height="4"   fill="#f9a825"/>
+            <rect x="286" y="164" width="4"  height="4"   fill="#f9a825"/>
+            <rect x="294" y="164" width="4"  height="4"   fill="#f9a825"/>
+            <circle cx="72"  cy="124" r="3" fill="#fff" opacity=".9"/>
+            <circle cx="82"  cy="116" r="4" fill="#fff" opacity=".9"/>
+            <circle cx="60"  cy="130" r="3" fill="#fff" opacity=".85"/>
+            <circle cx="52"  cy="140" r="3" fill="#ffe0ec" opacity=".8"/>
+            <circle cx="44"  cy="130" r="2" fill="#fff" opacity=".8"/>
+            <circle cx="72"  cy="124" r="1.5" fill="#ffe082"/>
+            <circle cx="82"  cy="116" r="1.5" fill="#ffe082"/>
+            <circle cx="60"  cy="130" r="1"   fill="#ffe082"/>
+            <circle cx="288" cy="120" r="3" fill="#fff" opacity=".9"/>
+            <circle cx="298" cy="112" r="4" fill="#fff" opacity=".9"/>
+            <circle cx="308" cy="122" r="3" fill="#ffe0ec" opacity=".85"/>
+            <circle cx="316" cy="132" r="3" fill="#fff" opacity=".8"/>
+            <circle cx="306" cy="134" r="2" fill="#ffe0ec" opacity=".8"/>
+            <circle cx="288" cy="120" r="1.5" fill="#ffe082"/>
+            <circle cx="298" cy="112" r="1.5" fill="#ffe082"/>
+            <circle cx="308" cy="122" r="1"   fill="#ffe082"/>
+            <circle cx="160" cy="108" r="3" fill="#fff" opacity=".85"/>
+            <circle cx="170" cy="100" r="4" fill="#fff" opacity=".9"/>
+            <circle cx="200" cy="100" r="4" fill="#fff" opacity=".9"/>
+            <circle cx="210" cy="108" r="3" fill="#ffe0ec" opacity=".85"/>
+            <circle cx="180" cy="96"  r="3" fill="#ffe0ec" opacity=".8"/>
+            <circle cx="160" cy="108" r="1.5" fill="#ffe082"/>
+            <circle cx="170" cy="100" r="1.5" fill="#ffe082"/>
+            <circle cx="200" cy="100" r="1.5" fill="#ffe082"/>
+            <circle cx="210" cy="108" r="1"   fill="#ffe082"/>
+        </svg>
+
+        <!-- Pixel Bee -->
+        <div class="bee-wrapper">
+            <svg class="bee-pixel" width="52" height="44" viewBox="0 0 52 44"
+                xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated;">
+                <g class="bee-wings">
+                    <rect x="10" y="2"  width="14" height="10" fill="#b3e5fc" opacity=".85" rx="3"/>
+                    <rect x="28" y="2"  width="14" height="10" fill="#b3e5fc" opacity=".85" rx="3"/>
+                    <rect x="12" y="12" width="10" height="7"  fill="#e1f5fe" opacity=".7"  rx="2"/>
+                    <rect x="30" y="12" width="10" height="7"  fill="#e1f5fe" opacity=".7"  rx="2"/>
+                </g>
+                <rect x="16" y="16" width="20" height="6"  fill="#fdd835"/>
+                <rect x="14" y="22" width="24" height="6"  fill="#212121"/>
+                <rect x="14" y="28" width="24" height="6"  fill="#fdd835"/>
+                <rect x="16" y="34" width="20" height="6"  fill="#212121"/>
+                <rect x="18" y="10" width="16" height="8"  fill="#fdd835"/>
+                <rect x="20" y="8"  width="12" height="4"  fill="#fdd835"/>
+                <rect x="20" y="12" width="4"  height="4"  fill="#fff"/>
+                <rect x="28" y="12" width="4"  height="4"  fill="#fff"/>
+                <rect x="21" y="13" width="2"  height="2"  fill="#212121"/>
+                <rect x="29" y="13" width="2"  height="2"  fill="#212121"/>
+                <rect x="22" y="4"  width="2"  height="6"  fill="#212121"/>
+                <rect x="28" y="4"  width="2"  height="6"  fill="#212121"/>
+                <rect x="20" y="2"  width="4"  height="3"  fill="#fdd835"/>
+                <rect x="28" y="2"  width="4"  height="3"  fill="#fdd835"/>
+                <rect x="22" y="40" width="8"  height="4"  fill="#795548"/>
+                <rect x="24" y="42" width="4"  height="3"  fill="#5d4037"/>
+            </svg>
+        </div>
+
+        <!-- Vespa + Button -->
+        <div class="vespa-container" id="vespa-container">
+            <svg class="pixel-vespa" width="80" height="60" viewBox="0 0 80 60"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="50" r="8" fill="#424242"/>
+                <circle cx="20" cy="50" r="4" fill="#bdbdbd"/>
+                <path d="M20 50 Q20 30 40 30 L65 30 L70 50 Z" fill="#4fc3f7"/>
+                <rect x="25" y="35" width="35" height="15" rx="5" fill="#29b6f6"/>
+                <rect x="22" y="30" width="25" height="6"  rx="2" fill="#5d4037"/>
+                <path d="M55 50 L75 50 L70 25 Q68 15 55 15 Z" fill="#29b6f6"/>
+                <rect x="52" y="45" width="20" height="5"  fill="#0288d1"/>
+                <rect x="62" y="15" width="2"  height="12" fill="#9e9e9e"/>
+                <rect x="58" y="12" width="12" height="4"  rx="1" fill="#29b6f6"/>
+                <circle cx="70" cy="14" r="4" fill="#e1f5fe" stroke="#9e9e9e" stroke-width="1"/>
+                <circle cx="68" cy="50" r="8" fill="#424242"/>
+                <circle cx="68" cy="50" r="4" fill="#bdbdbd"/>
+                <rect x="30" y="38" width="10" height="2"  fill="#ffffff" opacity="0.3"/>
+            </svg>
+            <button class="love-btn" id="main-btn">♥ Lesssgoooo ♥</button>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         BOOK DIALOG
+    ════════════════════════════════════════ -->
+    <div class="dialog-overlay" id="love-dialog">
+        <div class="book-scene" id="book-scene">
+            <div class="book-open">
+
+            <!-- LEFT half — always blank/decorative -->
+                <div class="book-left">
+                    <div class="left-blank">
+                        <div class="left-blank-line"></div>
+                        <div class="left-blank-line" style="width:55%"></div>
+                        <div class="left-blank-heart">♥</div>
+                        <div class="left-blank-line" style="width:55%"></div>
+                        <div class="left-blank-line"></div>
+                        <div class="left-blank-line" style="width:40%"></div>
+                        <div class="left-blank-line"></div>
+                        <div class="left-blank-line" style="width:65%"></div>
+                        <div class="left-blank-line" style="width:45%"></div>
+                    </div>
+                </div>
+
+                <!-- SPINE -->
+                <div class="book-spine"></div>
+
+             <!-- TURNING LEAF — carries the current right-page content, animates away on flip -->
+                <div class="book-leaf" id="book-leaf">
+                    <!-- Front face: the page being read (visible at rest, flips away) -->
+                    <div class="leaf-face front">
+                        <div class="pg-wrap">
+                            <div class="pg-num" id="lf-num"></div>
+                            <div class="pg-img" id="lf-img"></div>
+                            <p   class="pg-msg" id="lf-msg"></p>
+                        </div>
+                    </div>
+                    <!-- Back face: reveals blank left side of next page during flip -->
+                    <div class="leaf-face back">
+                        <div class="left-blank" style="opacity:0.25">
+                            <div class="left-blank-line"></div>
+                            <div class="left-blank-line" style="width:55%"></div>
+                            <div class="left-blank-heart">♡</div>
+                            <div class="left-blank-line" style="width:55%"></div>
+                            <div class="left-blank-line"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT half — shows the NEXT page (peeking behind leaf) -->
+                <div class="book-right">
+                    <div class="pg-wrap">
+                        <div class="pg-num" id="right-num"></div>
+                        <div class="pg-img" id="right-img"></div>
+                        <p   class="pg-msg" id="right-msg"></p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- NAV -->
+            <div class="book-nav">
+                <button class="nav-btn"  id="btn-back"  onclick="bookFlip(-1)" disabled>← Back</button>
+                <button class="nav-btn"  id="btn-next"  onclick="bookFlip(1)">Next →</button>
+                <button class="close-btn" id="btn-close" onclick="closeBook()" style="display:none">Close ♥</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating hearts -->
+    <script>
+        /* ─── Floating hearts ─── */
+        const hearts = ['♥','♡','❤','💕'];
+        for (let i = 0; i < 16; i++) {
+            const h = document.createElement('span');
+            h.className = 'heart-bg';
+            h.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+            h.style.left = Math.random() * 95 + '%';
+            h.style.animationDuration = (6 + Math.random() * 10) + 's';
+            h.style.animationDelay    = (Math.random() * 8) + 's';
+            h.style.fontSize = (12 + Math.random() * 18) + 'px';
+            document.body.appendChild(h);
+        }
+
+        /* ─── Click hearts ─── */
+        const clickSymbols = ['♥','❤','💕','💖','💗','💓','💝'];
+        const clickColors  = ['#e91e63','#f06292','#c2185b','#ff4081','#f48fb1','#ad1457','#ff80ab'];
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('button') || e.target.closest('.dialog-overlay')) return;
+            const h = document.createElement('span');
+            h.className = 'click-heart';
+            h.textContent = clickSymbols[Math.floor(Math.random() * clickSymbols.length)];
+            h.style.left  = (e.clientX - 12) + 'px';
+            h.style.top   = (e.clientY - 12) + 'px';
+            h.style.color = clickColors[Math.floor(Math.random() * clickColors.length)];
+            h.style.fontSize = (16 + Math.random() * 16) + 'px';
+            document.body.appendChild(h);
+            h.addEventListener('animationend', () => h.remove());
+        });
+
+        /* ─── Dynamic greeting ─── */
+        (function setGreeting() {
+            const h  = new Date().getHours();
+            let greeting, sub;
+            if (h >= 5 && h < 12) {
+                greeting = 'Goose Morning Maya ♥';
+                sub = 'Rise and shine, my favourite person. ☀️';
+            } else if (h >= 12 && h < 17) {
+                greeting = 'Goose Afternoon Maya ♥';
+                sub = 'Hope your day is as lovely as you are. 🌸';
+            } else if (h >= 17 && h < 21) {
+                greeting = 'Goose Evening Maya ♥';
+                sub = 'The best part of my evening is thinking of you. 🌙';
+            } else {
+                greeting = 'Goose Night Maya ♥';
+                sub = 'Sweet dreams, my love. 💫';
+            }
+            document.getElementById('greeting-title').textContent = greeting;
+            document.getElementById('greeting-sub').textContent   = sub;
+        })();
+
+        /* ─── Vespa zoom → open dialog ─── */
+        document.getElementById('main-btn').addEventListener('click', function() {
+            const container = document.getElementById('vespa-container');
+            container.classList.remove('zoom');
+            void container.offsetWidth;       // force reflow so animation restarts
+            container.classList.add('zoom');
+            setTimeout(() => {
+                document.getElementById('love-dialog').classList.add('open');
+                container.classList.remove('zoom');
+            }, 900);
+        });
+
+        /* ═══════════════════════════════════════════════════════════
+           BOOK — right-page-only model
+           ─────────────────────────────────────────────────────────
+           At rest:
+             • Leaf (front face) shows PAGES[curPage]   ← what user reads
+             • Right half (behind leaf) shows PAGES[curPage+1] ← pre-loaded
+           On forward flip:
+             1. Leaf animates rotateY(0→-180°)
+             2. After animation: curPage++, reload leaf front & right slot
+           On backward flip:
+             1. Set leaf to rotateY(-180°) instantly, load back=blank, front=curPage-1
+             2. Animate rotateY(-180→0°)
+             3. After: curPage--, reload
+        ═══════════════════════════════════════════════════════════ */
+
+
+        const PAGES = [
+            {
+                num: '✦ 1 / 5 ✦',
+                img: `<img src="IMG_4720.jpg" alt="us"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:8px;"/>`,
+                msg: `Hey Bee, It's been a month since we met for the first time. But, somehow it feels like I have known you for so much longer. 
+                🌸`
+            },
+            {
+                num: '✦ 2 / 5 ✦',
+                img: `<img src="IMG_5131.jpg" alt="us"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:8px;"/>`,
+                msg: `I do still remember how nervous I was for our first "date".  Thanks for taking a chance on me even though I did not show my nagarikta to you. 🌷`
+            },
+            {
+                num: '✦ 3 / 5 ✦',
+                img: `<img src="IMG_1431.jpg" alt="us"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:8px;"/>`,
+                msg: `I feel so lucky and blessed to say that you're my girlfriend. Thank you for being in my life. Thank you for being you. ⭐`
+            },
+            {
+                num: '✦ 4 / 5 ✦',
+                img: `<img src="IMG_4314.jpg" alt="us"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:8px;"/>`,
+                msg: `This year will be the best year for us. And you will go on to do amazing things and achieve all your dreams. I know it. 💕`
+            },
+            {
+                num: '✦ 5 / 5 ✦',
+                img: `<img src="IMG_2587.jpg" alt="us"
+                          style="width:100%;height:100%;object-fit:cover;border-radius:8px;"/>`,
+                msg: `I love you ekdam dherai. Even if I don't say it often and may not be able to show it. I love you I love you I love you. 💖`
+            }
+        ];
+let curPage  = 0;
+        let animating = false;
+
+        function loadPage(numId, imgId, msgId, idx) {
+            if (idx < 0 || idx >= PAGES.length) {
+                document.getElementById(numId).textContent = '';
+                document.getElementById(imgId).innerHTML   = '';
+                document.getElementById(msgId).textContent = '';
+                return;
+            }
+            const p = PAGES[idx];
+            document.getElementById(numId).textContent = p.num;
+            document.getElementById(imgId).innerHTML   = p.img;
+            document.getElementById(msgId).textContent = p.msg;
+        }
+
+        function renderCurrent() {
+            // Leaf front = curPage
+            loadPage('lf-num', 'lf-img', 'lf-msg', curPage);
+            // Right slot = curPage+1 (pre-loaded behind leaf)
+            loadPage('right-num', 'right-img', 'right-msg', curPage + 1);
+        }
+
+        function updateNav() {
+            document.getElementById('btn-back').disabled       = curPage <= 0;
+            const isLast = curPage >= PAGES.length - 1;
+            document.getElementById('btn-next').style.display  = isLast ? 'none' : '';
+            document.getElementById('btn-close').style.display = isLast ? 'inline-block' : 'none';
+        }
+
+        function bookFlip(dir) {
+            if (animating) return;
+            if (dir > 0 && curPage >= PAGES.length - 1) return;
+            if (dir < 0 && curPage <= 0) return;
+            animating = true;
+
+            const leaf = document.getElementById('book-leaf');
+            leaf.classList.remove('is-turning-fwd', 'is-turning-back');
+
+            if (dir > 0) {
+                // Leaf front already shows curPage; right slot already shows curPage+1
+                // Animate leaf from 0° → -180° (flips away to the left)
+                leaf.style.transform = 'rotateY(0deg)';
+                void leaf.offsetWidth;
+                leaf.classList.add('is-turning-fwd');
+
+                setTimeout(() => {
+                    curPage++;
+                    leaf.classList.remove('is-turning-fwd');
+                    leaf.style.transform = '';
+                    renderCurrent();
+                    animating = false;
+                    updateNav();
+                }, 780);
+
+            } else {
+                // Going back: leaf needs to animate from -180° → 0°
+                // Load curPage-1 onto leaf front (so it appears when leaf returns)
+                loadPage('lf-num', 'lf-img', 'lf-msg', curPage - 1);
+                // Right slot shows curPage (will be seen after leaf returns fully)
+                loadPage('right-num', 'right-img', 'right-msg', curPage);
+                leaf.style.transform = 'rotateY(-180deg)';
+                void leaf.offsetWidth;
+                leaf.classList.add('is-turning-back');
+
+                setTimeout(() => {
+                    curPage--;
+                    leaf.classList.remove('is-turning-back');
+                    leaf.style.transform = '';
+                    renderCurrent();
+                    animating = false;
+                    updateNav();
+                }, 780);
+            }
+        }
+
+        function closeBook() {
+            curPage = 0;
+            const leaf = document.getElementById('book-leaf');
+            leaf.classList.remove('is-turning-fwd', 'is-turning-back');
+            leaf.style.transform = '';
+            renderCurrent();
+            updateNav();
+            document.getElementById('love-dialog').classList.remove('open');
+        }
+
+        // Init
+        renderCurrent();
+        updateNav();
+    </script>
+</body>
+</html>
