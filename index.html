@@ -430,7 +430,24 @@
         }
     </style>
 </head>
+<div id="yt-player"></div>
+<script>
+  // Load YouTube IFrame API
+  var tag = document.createElement('script');
+  tag.src = "https://www.youtube.com/iframe_api";
+  document.head.appendChild(tag);
 
+  var ytPlayer;
+  function onYouTubeIframeAPIReady() {
+    ytPlayer = new YT.Player('yt-player', {
+      height: '0',
+      width: '0',
+      videoId: 'W3JJxS0gNkE',
+      playerVars: { autoplay: 0, loop: 1, playlist: 'W3JJxS0gNkE' },
+      events: { 'onReady': function(e) { e.target.setVolume(50); } }
+    });
+  }
+</script>
 <body>
 
     <!-- ── TITLE (dynamic greeting) ── -->
@@ -658,7 +675,7 @@
                     <div class="left-blank">
                         <div class="left-blank-line"></div>
                         <div class="left-blank-line" style="width:55%"></div>
-                        <div class="left-blank-heart">♥</div>
+                        <div class="left-blank-heart" style="color: #d2388a;">♥</div>
                         <div class="left-blank-line" style="width:55%"></div>
                         <div class="left-blank-line"></div>
                         <div class="left-blank-line" style="width:40%"></div>
@@ -767,6 +784,7 @@
 
         /* ─── Vespa zoom → open dialog ─── */
         document.getElementById('main-btn').addEventListener('click', function() {
+            if (ytPlayer && ytPlayer.playVideo) ytPlayer.playVideo();
             const container = document.getElementById('vespa-container');
             container.classList.remove('zoom');
             void container.offsetWidth;       // force reflow so animation restarts
@@ -817,7 +835,7 @@
                 num: '✦ 4 / 5 ✦',
                 img: `<img src="IMG_4314.jpg" alt="us"
                           style="width:100%;height:100%;object-fit:cover;border-radius:8px;"/>`,
-                msg: `This year will be the best year for us. And you will go on to do amazing things and achieve all your dreams. I know it. 💕`
+                msg: `This year will be the best year for us Maya. And you will go on to do amazing things and achieve all your dreams. I know it. 💕`
             },
             {
                 num: '✦ 5 / 5 ✦',
